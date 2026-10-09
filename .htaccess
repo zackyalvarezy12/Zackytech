@@ -1,0 +1,6 @@
+Options -Indexes
+DirectoryIndex index.php index.html
+
+<Files "database.sql">
+  Require all denied
+</Files>

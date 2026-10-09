@@ -1,0 +1,306 @@
+/* =====================================================
+   CV ZACKY ALVAREZY — STYLESHEET
+   Tema: biru tua + putih, minimalis, ATS-friendly
+   Tata letak satu kolom, ukuran siap cetak A4 (maks. 2 halaman)
+   ===================================================== */
+
+:root {
+  --navy: #12375c;
+  --navy-deep: #0b2540;
+  --navy-soft: #1f4e79;
+  --line: #d9e1ea;
+  --line-strong: #b9c7d6;
+  --text: #20252b;
+  --muted: #5a6673;
+  --paper: #ffffff;
+  --page: #e9edf2;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--page);
+  color: var(--text);
+  font-family: "Segoe UI", "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  font-size: 14.5px;
+  line-height: 1.5;
+  padding: 32px 16px 48px;
+}
+
+/* ---------- Lembar CV ---------- */
+.cv {
+  max-width: 830px;
+  margin: 0 auto;
+  background: var(--paper);
+  padding: 42px 52px 46px;
+  border-top: 5px solid var(--navy);
+  box-shadow: 0 10px 40px rgba(11, 37, 64, 0.14);
+}
+
+/* ---------- Petunjuk (hanya tampil di layar) ---------- */
+.print-hint {
+  max-width: 830px;
+  margin: 0 auto 14px;
+  font-size: 12.5px;
+  color: var(--muted);
+  text-align: right;
+}
+
+.print-hint strong {
+  color: var(--navy);
+}
+
+/* =====================================================
+   KEPALA CV
+   ===================================================== */
+.cv-header {
+  padding-bottom: 16px;
+  border-bottom: 2px solid var(--navy);
+}
+
+/* Mengurung foto yang mengapung agar garis batas tetap rapi */
+.cv-header::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.cv-photo {
+  float: right;
+  width: 104px;
+  height: 104px;
+  object-fit: cover;
+  border: 2px solid var(--navy);
+  border-radius: 4px;
+  margin: 2px 0 8px 24px;
+}
+
+.cv-name {
+  font-size: 31px;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--navy-deep);
+}
+
+.cv-role {
+  margin-top: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--navy-soft);
+}
+
+.cv-contacts {
+  margin-top: 11px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.cv-contacts .sep {
+  padding: 0 7px;
+  color: var(--line-strong);
+}
+
+.cv-contacts a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+/* =====================================================
+   BAGIAN / SECTION
+   ===================================================== */
+.cv-section {
+  margin-top: 22px;
+}
+
+.cv-section-title {
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--navy);
+  padding-bottom: 5px;
+  border-bottom: 1px solid var(--line-strong);
+  margin-bottom: 12px;
+}
+
+.cv-summary {
+  font-size: 13.5px;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+/* ---------- Entri (pengalaman, pendidikan, proyek) ---------- */
+.entry + .entry {
+  margin-top: 15px;
+}
+
+.entry-title {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--navy-deep);
+}
+
+/* Tanggal rata kanan pada baris judul entri */
+.entry-title .entry-date {
+  float: right;
+  padding-left: 18px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.entry-title::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.entry-org {
+  margin-top: 2px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--navy-soft);
+}
+
+.entry-meta {
+  margin-top: 2px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.entry-list {
+  list-style: none;
+  margin-top: 6px;
+}
+
+.entry-list li {
+  position: relative;
+  padding-left: 15px;
+  margin-bottom: 3px;
+  font-size: 13.5px;
+  line-height: 1.55;
+}
+
+.entry-list li:last-child {
+  margin-bottom: 0;
+}
+
+.entry-list li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 7px;
+  width: 5px;
+  height: 5px;
+  background: var(--navy-soft);
+  border-radius: 1px;
+}
+
+/* ---------- Keterampilan ---------- */
+.skill-list {
+  display: grid;
+  gap: 7px;
+}
+
+.skill-row {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 12px;
+  align-items: baseline;
+}
+
+.skill-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--navy-deep);
+}
+
+.skill-values {
+  font-size: 13.5px;
+  line-height: 1.55;
+}
+
+/* =====================================================
+   CETAK / EKSPOR PDF
+   ===================================================== */
+@page {
+  size: A4;
+  margin: 12mm 14mm;
+}
+
+@media print {
+  body {
+    background: #ffffff;
+    padding: 0;
+    font-size: 13.6px;
+  }
+
+  .print-hide {
+    display: none !important;
+  }
+
+  .cv {
+    max-width: none;
+    padding: 0;
+    border-top: none;
+    box-shadow: none;
+  }
+
+  .cv-name {
+    font-size: 25px;
+  }
+
+  .cv-section {
+    margin-top: 15px;
+  }
+
+  /* Jangan memotong entri di tengah halaman */
+  .entry,
+  .skill-row,
+  .cv-section-title {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+/* ---------- Penyesuaian layar kecil ---------- */
+@media screen and (max-width: 640px) {
+  body {
+    padding: 16px 10px 32px;
+  }
+
+  .cv {
+    padding: 28px 22px 32px;
+  }
+
+  .cv-photo {
+    width: 82px;
+    height: 82px;
+    margin-left: 16px;
+  }
+
+  .cv-name {
+    font-size: 23px;
+  }
+
+  .skill-row {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+}
