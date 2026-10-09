@@ -30,6 +30,7 @@ if ($projects) {
     }
     foreach ($projects as $project) {
         $projectId = (int) $project['id'];
+      $projectGalleries[$projectId] ??= [];
         $cover = $project['image'] ? asset_path($project['image']) : '';
         if ($cover !== '' && !in_array($cover, $projectGalleries[$projectId] ?? [], true)) {
             array_unshift($projectGalleries[$projectId], $cover);
@@ -97,7 +98,7 @@ $cvFile = asset_path($profile['cv_file'] ?? null);
   <?php if ($photo !== ''): ?><meta property="og:image" content="<?= e($photo) ?>"><?php endif; ?>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <script>
     try {
       document.documentElement.dataset.theme = localStorage.getItem('portfolio-theme') || 'dark';
@@ -106,7 +107,7 @@ $cvFile = asset_path($profile['cv_file'] ?? null);
     }
   </script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="<?= e(url('assets/css/portfolio.css')) ?>" rel="stylesheet">
+  <link href="<?= e(url('assets/css/portfolio.css')) ?>?v=<?= (int) filemtime(__DIR__ . '/assets/css/portfolio.css') ?>" rel="stylesheet">
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top site-nav">
@@ -261,6 +262,6 @@ $cvFile = asset_path($profile['cv_file'] ?? null);
 </div>
 <footer class="site-footer"><div class="container d-flex flex-wrap justify-content-between gap-3"><span>© <?= e(date('Y')) ?> <?= e($displayName) ?>. Dibuat dengan tujuan.</span><a href="#home">Kembali ke atas ↑</a></div></footer>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="<?= e(url('assets/js/portfolio.js')) ?>"></script>
+<script src="<?= e(url('assets/js/portfolio.js')) ?>?v=<?= (int) filemtime(__DIR__ . '/assets/js/portfolio.js') ?>"></script>
 </body>
 </html>

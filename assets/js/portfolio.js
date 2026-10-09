@@ -105,7 +105,23 @@
           link.classList.toggle('active', link.getAttribute('href') === `#${entry.target.id}`);
         });
       });
-    }, { rootMargin: '-30% 0px -60% 0px' });
+    }, { rootMargin: '-30% 0px -8% 0px', threshold: 0.08 });
     sections.forEach((section) => observer.observe(section));
+  }
+
+  const revealSelector = '.hero-content > .row > .col-lg-7, .hero-content > .row > .col-lg-5, .section-pad .section-kicker, .section-pad .section-title, .section-pad .section-heading, .section-pad .profile-facts > div, .section-pad .skill-card, .section-pad .content-card, .section-pad .timeline-item, .section-pad .contact-links > a, .section-pad .contact-form';
+  const revealTargets = Array.from(document.querySelectorAll(revealSelector));
+  if ('IntersectionObserver' in window && revealTargets.length) {
+    revealTargets.forEach((target, index) => {
+      target.classList.add('scroll-reveal', index % 2 === 0 ? 'reveal-from-left' : 'reveal-from-right');
+      target.style.setProperty('--reveal-delay', `${Math.min(index % 4, 3) * 70}ms`);
+    });
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        entry.target.classList.toggle('is-visible', entry.isIntersecting);
+      });
+    }, { rootMargin: '0px 0px -12% 0px', threshold: 0.08 });
+    revealTargets.forEach((target) => revealObserver.observe(target));
   }
 })();
